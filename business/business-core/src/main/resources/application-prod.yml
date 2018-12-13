@@ -1,0 +1,24 @@
+
+spring:
+  dubbo:
+    application:
+      id: happycommunity-business
+      name: happycommunity-business
+    protocol:
+      id: happycommunity-business-protocol
+      name: dubbo
+      port: 20010
+    registry:
+      protocol: zookeeper
+      address: zookeeper://39.106.124.34:2181
+    scan: com.happycommunity.business.service
+
+  aop:
+    proxy-target-class: true #false使用jdk代理（默认）；true使用cglib
+
+system:
+  rsaPrivateKey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAM+FrUhhbbMi37gOKsRNLDeJ8whvg9LvM4oAy35ePUjbpp0VRyGT0y/8RQWMxMgCjBLgCGEg+44PnoW8nph5VL3XtAVCoyrXZlMbcp6oEcBS8qUZ4Ao33fMSctgE0fB5B4ME2uFtr6dvVP+00SqvjX0Vtfll66cF9sSnm79pjAztAgMBAAECgYEAy3zyEMJwdjKhGvLRXtGppQAhDsmCgujJKe5jnBM+lt3Df86ohDVW5XvCFpIVN2bAAZYqwUs9P+zy7YKqJSr8OrNs/UhQI7oVbcHSQdXreAkNcnTIyFBwNLTbDYdSLio94AC+GF1wKC/yx9L6krCscFrrbz/uZjQnYaTLjpcwnoECQQDmxgcIFjmA4Q5jEt42nb781qF4GQi9pxCIvH09nlukSalEpINKDox8qNTXtkVV2y9LRLQHwiXTXVJW5v5kOxRNAkEA5jT7hs+9dVFBO8k0KbXzTc9Ccum6CLsMmdCrPvdsMkHUzPrBmrOwvW5zMQG2dEA4dwm9X4q3duV6mbqsEFurIQJAGJex2CLGLf3N0rEIDTnySG929Z11WQCcunWbwx1FFtTivPXrJ9E1F3PGetZpvSSGfbbsmIcQEN45EBm9smC5YQJBAN0tDnSp50duOBSu7ZUdoZOijB9H/FsjC6pE2CL5KVTn9wKx8Y0nE6oNElOFZ70tbpLAIthGuJpdRHuq5GIbEMECQBf+Khd9QDVO5e5Kz5XVlq+PNR8tIUoWmZcQjWSruZ9/1lchPDASidYEqb2ja5NVzoIgeB7fineXvxKZ/iKK4+c=
+  rsaPublicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPha1IYW2zIt+4DirETSw3ifMIb4PS7zOKAMt+Xj1I26adFUchk9Mv/EUFjMTIAowS4AhhIPuOD56FvJ6YeVS917QFQqMq12ZTG3KeqBHAUvKlGeAKN93zEnLYBNHweQeDBNrhba+nb1T/tNEqr419FbX5ZeunBfbEp5u/aYwM7QIDAQAB
+  log:
+    logPath: /Users/dannyhoo/data/logs/happycommunity/business
+    logLevel: INFO

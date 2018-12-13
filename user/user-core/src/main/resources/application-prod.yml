@@ -1,0 +1,64 @@
+
+spring:
+  dubbo:
+    application:
+      #注册在注册中心的名称，唯一标识，请勿重复
+      id: happycommunity-user
+      name: happycommunity-user
+    #注册中心
+    #zookeeper集群：zookeeper://127.0.0.1:2181?backup: 127.0.0.1:2180,127.0.0.1:2182
+    #单zookeeper服务：zookeeper://127.0.0.1:2181
+    registry:
+      protocol: zookeeper
+      address: zookeeper://39.106.124.34:2181
+    #暴露服务方式
+    protocol:
+      id: happycommunity-user-protocol
+      #暴露服务协议名称
+      name: dubbo
+      #暴露服务端口
+      port: 20020
+    #provider实现类所在包
+    scan: com.happycommunity.user.service
+
+  datasource:
+    url: jdbc:mysql://39.106.124.34:3306/happycommunity_user?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: danny6688
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    
+  aop:
+    proxy-target-class: true #false使用jdk代理（默认）；true使用cglib
+
+logging:
+  level:
+    com.happycommunity.user.dao: debug #控制台打印sql
+  #config: classpath:logback-spring.xml
+
+system:
+  log:
+    logPath: /Users/dannyhoo/data/logs/happycommunity/user
+    logLevel: INFO

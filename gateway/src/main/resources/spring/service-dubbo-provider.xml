@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">	
+
+    <!--<dubbo:application name="com.happycommunity-core-app"  />
+    <dubbo:provider retries="0" timeout="20000" />
+    <dubbo:registry id="com.happycommunity-core-registry" protocol="zookeeper" address="${dubbo.provider.registry}" file="dubbo-registry.cache"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.provider.port}"  server="netty" client="netty" serialization="java" charset="UTF-8" threadpool="fixed" threads="200" queues="0" iothreads="9" buffer="8192" accepts="1000" payload="88388608" />
+   
+	<dubbo:service registry="com.happycommunity-core-registry" application="com.happycommunity-core-app"
+				   interface="com.happycommunity.service.demo.DemoService" ref="demoService" version="${dubbo.provider.service.version}" protocol="dubbo" />-->
+
+</beans>
