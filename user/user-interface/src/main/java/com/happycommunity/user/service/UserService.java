@@ -2,6 +2,7 @@ package com.happycommunity.user.service;
 
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.result.ServiceResult;
+import com.happycommunity.user.model.parameter.UserListParameter;
 import com.happycommunity.user.model.parameter.UserParameter;
 
 /**
@@ -15,5 +16,7 @@ public interface UserService {
     public ServiceResult<UserDTO> findByUserName(UserParameter userParameter);
 
     public ServiceResult<UserDTO> saveUser(UserParameter userParameter);
+
+    public ServiceResult<Boolean> saveUserList(UserListParameter userListParameter) throws Exception;
 
 }

@@ -2,8 +2,9 @@ package com.happycommunity.business.service.user;
 
 import com.happycommunity.business.model.parameter.LoginParameter;
 import com.happycommunity.business.model.parameter.RegisterParameter;
-import com.happycommunity.business.model.result.LoginResult;
-import com.happycommunity.business.model.result.RegisterResult;
+import com.happycommunity.business.model.parameter.user.UserListParameter;
+import com.happycommunity.business.model.result.user.LoginResult;
+import com.happycommunity.business.model.result.user.RegisterResult;
 import com.happycommunity.framework.common.model.result.ServiceResult;
 
 /**
@@ -17,6 +18,5 @@ public interface UserBusinessService {
     public ServiceResult<RegisterResult> register(RegisterParameter registerParameter);
 
     public ServiceResult<LoginResult> login(LoginParameter loginParameter);
-
 
 }

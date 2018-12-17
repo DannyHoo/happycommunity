@@ -1,4 +1,4 @@
-package com.happycommunity.business.model.result;
+package com.happycommunity.business.model.result.user;
 
 import com.happycommunity.framework.common.model.result.BaseResult;
 

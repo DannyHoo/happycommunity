@@ -4,8 +4,9 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.happycommunity.business.config.SystemConfig;
 import com.happycommunity.business.model.parameter.LoginParameter;
 import com.happycommunity.business.model.parameter.RegisterParameter;
-import com.happycommunity.business.model.result.LoginResult;
-import com.happycommunity.business.model.result.RegisterResult;
+import com.happycommunity.business.model.parameter.user.UserListParameter;
+import com.happycommunity.business.model.result.user.LoginResult;
+import com.happycommunity.business.model.result.user.RegisterResult;
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.enums.ResultStatusEnum;
 import com.happycommunity.framework.common.model.result.ServiceResult;
@@ -93,6 +94,5 @@ public class UserBusinessServiceImpl implements UserBusinessService {
         }
         return new ServiceResult(ResultStatusEnum.USERNAME_OR_PASSWORD_INVALID);
     }
-
 
 }

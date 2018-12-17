@@ -32,5 +32,6 @@ public interface UserDAO {
                     + "</foreach>"
                     + "</script>"
     })
+    @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statementType = StatementType.STATEMENT, statement = "SELECT LAST_INSERT_ID() AS id")
     int insertUserDOBatch(@Param("userDOList") List<UserDO> userDOList);
 }
