@@ -13,12 +13,14 @@
         <module>user</module>
         <module>business</module>
         <module>gateway</module>
+        <module>goods</module>
     </modules>
 
     <properties>
         <framework.version>1.0-SNAPSHOT</framework.version>
         <happycommunity-user.version>1.0-SNAPSHOT</happycommunity-user.version>
         <happycommunity-business.version>1.0-SNAPSHOT</happycommunity-business.version>
+        <happycommunity-goods.version>1.0-SNAPSHOT</happycommunity-goods.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -64,7 +66,11 @@
                 <artifactId>business-interface</artifactId>
                 <version>${happycommunity-business.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.happycommunity</groupId>
+                <artifactId>goods-interface</artifactId>
+                <version>${happycommunity-goods.version}</version>
+            </dependency>
             <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

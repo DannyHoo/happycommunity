@@ -3,16 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>business</artifactId>
+        <artifactId>goods</artifactId>
         <groupId>com.happycommunity</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>business-core</artifactId>
+    <artifactId>goods-core</artifactId>
 
     <dependencies>
-        <!-- *************************************内部模块 ************************************ -->
+        <!-- ******************************************* 内部模块 ***************************************** -->
         <dependency>
             <groupId>com.happycommunity</groupId>
             <artifactId>framework-common</artifactId>
@@ -27,11 +27,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>com.happycommunity</groupId>
-            <artifactId>business-interface</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.happycommunity</groupId>
             <artifactId>user-interface</artifactId>
@@ -40,7 +35,6 @@
             <groupId>com.happycommunity</groupId>
             <artifactId>goods-interface</artifactId>
         </dependency>
-
         <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,11 +72,32 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
+        <!-- ****************************************** 数据库相关 *************************************** -->
+        <!-- Spring Boot Mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- MySQL 连接驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
@@ -91,6 +106,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>

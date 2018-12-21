@@ -1,12 +1,12 @@
-package com.happycommunity.business.service.user;
+package com.happycommunity.business.service.impl.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.happycommunity.business.config.SystemConfig;
 import com.happycommunity.business.model.parameter.LoginParameter;
 import com.happycommunity.business.model.parameter.RegisterParameter;
-import com.happycommunity.business.model.parameter.user.UserListParameter;
 import com.happycommunity.business.model.result.user.LoginResult;
 import com.happycommunity.business.model.result.user.RegisterResult;
+import com.happycommunity.business.service.user.UserBusinessService;
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.enums.ResultStatusEnum;
 import com.happycommunity.framework.common.model.result.ServiceResult;

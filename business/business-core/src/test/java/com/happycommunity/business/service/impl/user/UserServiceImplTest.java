@@ -1,4 +1,4 @@
-package com.happycommunity.business.impl;
+package com.happycommunity.business.service.impl.user;
 
 import com.alibaba.fastjson.JSON;
 import com.happycommunity.business.AbstractTest;

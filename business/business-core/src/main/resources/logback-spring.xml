@@ -29,7 +29,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <file>${logPath}/business.log</file>
         <!--按照每天生成日志文件，最多保留30天，每过一天，日志名就变成类似log.2017-01-19.log.gz的形式。-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${system.log.loggingRoot}/business.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${logPath}/business.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>90</maxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

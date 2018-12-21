@@ -28,7 +28,7 @@ public class DubboServiceContextAspect {
 
     @Before("setContextBeforeInvokeDubbo()")
     public void setContext(JoinPoint joinPoint) {
-        GlobalTraceData globalTraceData = GlobalTraceDataHandler.getGlobalTraceData();
+        /*GlobalTraceData globalTraceData = GlobalTraceDataHandler.getGlobalTraceData();
         if (globalTraceData != null) {
             Map<String, String> context = new HashMap<String, String>();
             context.put("gRequestId", globalTraceData.getgRequestId());
@@ -40,6 +40,6 @@ public class DubboServiceContextAspect {
             context.put("gRequestIp", globalTraceData.getgRequestIp());
             context.put("gAppClientVersion", globalTraceData.getgAppClientVersion());
             RpcContext.getContext().setAttachments(context);
-        }
+        }*/
     }
 }
