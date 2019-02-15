@@ -40,6 +40,10 @@
             <groupId>com.happycommunity</groupId>
             <artifactId>goods-interface</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.happycommunity</groupId>
+            <artifactId>order-interface</artifactId>
+        </dependency>
 
         <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
         <dependency>

@@ -13,6 +13,7 @@ import java.util.Date;
 public class BaseParameter extends GlobalTraceData {
 
     private Long id;
+    private String comment;
     private Date createTime;
     private Date updateTime;
 
@@ -22,6 +23,15 @@ public class BaseParameter extends GlobalTraceData {
 
     public BaseParameter setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public BaseParameter setComment(String comment) {
+        this.comment = comment;
         return this;
     }
 

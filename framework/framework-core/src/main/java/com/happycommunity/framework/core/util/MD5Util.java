@@ -1,5 +1,9 @@
 package com.happycommunity.framework.core.util;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 
 /**
@@ -45,7 +49,31 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(MD5Util.md5HexTwoSourceAndSalt("123","456"));
+        System.out.println(MD5Util.md5HexTwoSourceAndSalt("123","1"));
     }
 
+
+    /**
+     * 签名字符串
+     * @param salt 加密因子
+     * @param password 密码
+     * @return 签名结果
+     */
+    public static String sign(String salt, String password) {
+        if (StringUtils.isBlank(salt) || StringUtils.isBlank(password)) {
+            throw new IllegalArgumentException("salt or password can not be blank.");
+        }
+
+        try {
+            return DigestUtils.md5Hex(getSaltPassword(salt,password).getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private static String getSaltPassword(String salt,String password){
+        return StringUtils.trim(salt).concat(StringUtils.trim(password));
+    }
 }

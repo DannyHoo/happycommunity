@@ -1,4 +1,4 @@
-package com.happycommunity.user.impl;
+package com.happycommunity.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.happycommunity.framework.common.model.dto.user.UserDTO;

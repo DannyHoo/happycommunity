@@ -1,6 +1,7 @@
 package com.happycommunity.goods.service;
 
 import com.happycommunity.framework.common.model.result.ServiceResult;
+import com.happycommunity.goods.model.parameter.OrderListParameter;
 
 /**
  * @author Danny

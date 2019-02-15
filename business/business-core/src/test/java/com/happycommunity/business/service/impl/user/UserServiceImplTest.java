@@ -2,8 +2,8 @@ package com.happycommunity.business.service.impl.user;
 
 import com.alibaba.fastjson.JSON;
 import com.happycommunity.business.AbstractTest;
-import com.happycommunity.business.model.parameter.LoginParameter;
-import com.happycommunity.business.model.parameter.RegisterParameter;
+import com.happycommunity.business.model.parameter.user.LoginParameter;
+import com.happycommunity.business.model.parameter.user.RegisterParameter;
 import com.happycommunity.business.model.result.user.LoginResult;
 import com.happycommunity.business.model.result.user.RegisterResult;
 import com.happycommunity.business.service.user.UserBusinessService;

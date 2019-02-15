@@ -14,6 +14,7 @@
         <module>business</module>
         <module>gateway</module>
         <module>goods</module>
+        <module>order</module>
     </modules>
 
     <properties>
@@ -21,6 +22,7 @@
         <happycommunity-user.version>1.0-SNAPSHOT</happycommunity-user.version>
         <happycommunity-business.version>1.0-SNAPSHOT</happycommunity-business.version>
         <happycommunity-goods.version>1.0-SNAPSHOT</happycommunity-goods.version>
+        <happycommunity-order.version>1.0-SNAPSHOT</happycommunity-order.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -70,6 +72,11 @@
                 <groupId>com.happycommunity</groupId>
                 <artifactId>goods-interface</artifactId>
                 <version>${happycommunity-goods.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.happycommunity</groupId>
+                <artifactId>order-interface</artifactId>
+                <version>${happycommunity-order.version}</version>
             </dependency>
             <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
             <dependency>
@@ -144,6 +151,11 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
             <!-- zookeeper的客户端依赖 -->
             <dependency>
@@ -195,7 +207,11 @@
                 <artifactId>servlet-api</artifactId>
                 <version>2.5</version>
             </dependency>
-
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.10</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

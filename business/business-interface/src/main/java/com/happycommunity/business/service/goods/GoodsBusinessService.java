@@ -8,5 +8,4 @@ package com.happycommunity.business.service.goods;
  */
 public interface GoodsBusinessService {
 
-    public void test();
 }

@@ -1,8 +1,7 @@
 package com.happycommunity.business.service.user;
 
-import com.happycommunity.business.model.parameter.LoginParameter;
-import com.happycommunity.business.model.parameter.RegisterParameter;
-import com.happycommunity.business.model.parameter.user.UserListParameter;
+import com.happycommunity.business.model.parameter.user.LoginParameter;
+import com.happycommunity.business.model.parameter.user.RegisterParameter;
 import com.happycommunity.business.model.result.user.LoginResult;
 import com.happycommunity.business.model.result.user.RegisterResult;
 import com.happycommunity.framework.common.model.result.ServiceResult;

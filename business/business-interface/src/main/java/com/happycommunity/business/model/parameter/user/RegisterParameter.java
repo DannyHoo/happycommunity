@@ -1,4 +1,6 @@
-package com.happycommunity.business.model.parameter;
+package com.happycommunity.business.model.parameter.user;
+
+import com.happycommunity.business.model.parameter.CommonBusinessParameter;
 
 /**
  * @author Danny

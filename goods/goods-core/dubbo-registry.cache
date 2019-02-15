@@ -1,0 +1,3 @@
+#Dubbo Registry Cache
+#Fri Feb 15 23:08:23 CST 2019
+com.happycommunity.goods.service.GoodsService\:1.0.0=empty\://169.254.171.85\:20030/com.happycommunity.goods.service.GoodsService?accepts\=1000&anyhost\=true&application\=happycommunity-goods-app&buffer\=8192&category\=configurators&charset\=UTF-8&check\=false&client\=netty&default.retries\=0&default.timeout\=20000&dubbo\=2.5.3&interface\=com.happycommunity.goods.service.GoodsService&iothreads\=9&methods\=findByUserName&payload\=88388608&pid\=29787&queues\=0&revision\=1.0.0&serialization\=java&server\=netty&side\=provider&threadpool\=fixed&threads\=200&timestamp\=1550243302390&version\=1.0.0

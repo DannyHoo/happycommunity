@@ -2,6 +2,7 @@ package com.happycommunity.user.model.parameter;
 
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.model.GlobalTraceData;
+import com.happycommunity.framework.common.model.parameter.BaseParameter;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @Description:
  * @Created on 2018-12-14 15:35:52
  */
-public class UserListParameter extends GlobalTraceData {
+public class UserListParameter extends BaseParameter {
 
     private List<UserDTO> userDTOList;
 

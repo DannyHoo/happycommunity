@@ -19,6 +19,6 @@ public class GoodsBusinessServiceImplTest extends AbstractTest {
 
     @Test
     public void test(){
-        goodsBusinessService.test();
+
     }
 }

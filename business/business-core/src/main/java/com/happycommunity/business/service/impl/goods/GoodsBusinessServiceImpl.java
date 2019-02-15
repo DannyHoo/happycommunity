@@ -13,13 +13,9 @@ import org.springframework.stereotype.Service;
  */
 @Service("goodsBusinessService")
 @com.alibaba.dubbo.config.annotation.Service(version = "1.0.0", interfaceClass = GoodsBusinessService.class,filter = "dubboContextFilter")
-public class GoodsBusinessServiceImpl implements GoodsBusinessService{
+public class GoodsBusinessServiceImpl implements GoodsBusinessService {
 
     @Reference(version = "1.0.0")
     private GoodsService goodsService;
 
-    @Override
-    public void test() {
-        goodsService.findByUserName();
-    }
 }

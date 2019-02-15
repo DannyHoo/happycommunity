@@ -1,4 +1,6 @@
-package com.happycommunity.business.model.parameter;
+package com.happycommunity.business.model.parameter.user;
+
+import com.happycommunity.business.model.parameter.CommonBusinessParameter;
 
 /**
  * @author Danny
@@ -6,7 +8,7 @@ package com.happycommunity.business.model.parameter;
  * @Description:
  * @Created on 2018-11-29 12:54:38
  */
-public class LoginParameter extends CommonBusinessParameter{
+public class LoginParameter extends CommonBusinessParameter {
     private String userName;
     private String password;
 
