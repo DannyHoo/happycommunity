@@ -29,6 +29,11 @@
             <artifactId>business-interface</artifactId>
             <version>${happycommunity-business.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.happycommunity</groupId>
+            <artifactId>framework-cache</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
 
         <!-- 工具 -->
         <dependency>
