@@ -8,6 +8,7 @@ import com.happycommunity.business.model.result.user.LoginResult;
 import com.happycommunity.business.model.result.user.RegisterResult;
 import com.happycommunity.business.service.user.UserBusinessService;
 import com.happycommunity.framework.common.model.result.ServiceResult;
+import com.happycommunity.framework.core.util.StringUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,16 +25,24 @@ public class UserServiceImplTest extends AbstractTest {
 
     @Test
     public void loginTest() {
-        ServiceResult<LoginResult> loginResult = userBusinessService.login(new LoginParameter().setUserName("Danny")
-                .setPassword(""));
+        ServiceResult<LoginResult> loginResult = userBusinessService.login(new LoginParameter().setUserName("KCI85b0y")
+                .setPassword("ECFxzhYeI6YrucyEi0CG0gQEvOkGl1fh0MdHwrMpdUvnAQfO0UCfj6G1nxqW5yPxgKW62u7/Sb1yVgePbwuVBE5DyKl8vyBOdBF5I2cbi5v9hnfarOFQzvJAWJ7gcGXEFK9zpNk/tqpK4wBgOLwwmL15g9+1x8M2eDIkX/9Fc+U="));
         System.out.println(JSON.toJSONString(loginResult));
     }
 
     @Test
     public void registerTest() {
-        ServiceResult<RegisterResult> loginResult = userBusinessService.register(new RegisterParameter().setUserName("Danny2")
-                .setPassword("L76vt98XUr9vlos4/Q3etKdqDZn6fKdVJMIlYjWgie/s/OQ9QQvjNRQEbyd8ugkdYr4iKM0PycAvrkK2K2/zZBsdko2gCj0XrAKg9Hm2ozD6X9Y676TyxpvftQTQH/YTKYQMrEzCRNje8uib5+5OxA4bH7cWOdLp+vyyeDMkzi4="));
+        ServiceResult<RegisterResult> loginResult = userBusinessService.register(new RegisterParameter().setUserName(StringUtil.getStringRandom(8))
+                .setPassword("ECFxzhYeI6YrucyEi0CG0gQEvOkGl1fh0MdHwrMpdUvnAQfO0UCfj6G1nxqW5yPxgKW62u7/Sb1yVgePbwuVBE5DyKl8vyBOdBF5I2cbi5v9hnfarOFQzvJAWJ7gcGXEFK9zpNk/tqpK4wBgOLwwmL15g9+1x8M2eDIkX/9Fc+U="));
         System.out.println(JSON.toJSONString(loginResult));
     }
 
+    @Test
+    public void registerBatchTest() {
+        for(int i=0;i<100;i++){
+            ServiceResult<RegisterResult> loginResult = userBusinessService.register(new RegisterParameter().setUserName(StringUtil.getStringRandom(8))
+                    .setPassword("ECFxzhYeI6YrucyEi0CG0gQEvOkGl1fh0MdHwrMpdUvnAQfO0UCfj6G1nxqW5yPxgKW62u7/Sb1yVgePbwuVBE5DyKl8vyBOdBF5I2cbi5v9hnfarOFQzvJAWJ7gcGXEFK9zpNk/tqpK4wBgOLwwmL15g9+1x8M2eDIkX/9Fc+U="));
+            System.out.println(JSON.toJSONString(loginResult));
+        }
+    }
 }

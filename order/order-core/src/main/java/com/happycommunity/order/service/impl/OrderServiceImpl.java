@@ -11,6 +11,7 @@ import com.happycommunity.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Danny
@@ -26,6 +27,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderDAO orderDAO;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ServiceResult<OrderDTO> saveOrder(OrderParameter orderParameter) {
         OrderDO orderDO= BeanUtil.convertIgnoreNullProperty(orderParameter,OrderDO.class);
         int result=orderDAO.insertOrderDO(orderDO);

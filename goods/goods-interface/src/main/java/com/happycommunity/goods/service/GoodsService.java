@@ -1,6 +1,8 @@
 package com.happycommunity.goods.service;
 
+import com.happycommunity.framework.common.model.dto.goods.GoodsDTO;
 import com.happycommunity.framework.common.model.result.ServiceResult;
+import com.happycommunity.goods.model.parameter.GoodsParameter;
 import com.happycommunity.goods.model.parameter.OrderListParameter;
 
 /**
@@ -11,6 +13,9 @@ import com.happycommunity.goods.model.parameter.OrderListParameter;
  */
 public interface GoodsService {
 
-    public ServiceResult<Object> findByUserName();
+    ServiceResult<GoodsDTO> findByGoodsNo(GoodsParameter goodsParameter);
 
+    ServiceResult<Boolean>  saveGoods(GoodsParameter setBalance);
+
+    ServiceResult<Boolean> updateGoods(GoodsParameter setBalance);
 }

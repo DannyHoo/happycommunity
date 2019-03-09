@@ -1,17 +1,37 @@
 
 spring:
+  dubbo:
+    application:
+      #注册在注册中心的名称，唯一标识，请勿重复
+      id: happycommunity-goods
+      name: happycommunity-goods
+    #注册中心
+    #zookeeper集群：zookeeper://127.0.0.1:2181?backup: 127.0.0.1:2180,127.0.0.1:2182
+    #单zookeeper服务：zookeeper://127.0.0.1:2181
+    registry:
+      protocol: zookeeper
+      address: zookeeper://39.106.124.34:2181
+    #暴露服务方式
+    protocol:
+      id: happycommunity-goods-protocol
+      #暴露服务协议名称
+      name: dubbo
+      #暴露服务端口
+      port: 20030
+    #provider实现类所在包
+    scan: com.happycommunity.goods.service
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/happycommunity_goods?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://39.106.124.34:3306/happycommunity_goods?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: 123456
+    password: danny6688
     driver-class-name: com.mysql.jdbc.Driver
     platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
-    initialSize: 1
+    initialSize: 10
     minIdle: 3
-    maxActive: 20
+    maxActive: 80
     # 配置获取连接等待超时的时间
     maxWait: 60000
     # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
@@ -35,7 +55,7 @@ spring:
 
 logging:
   level:
-    com.happycommunity.user.dao: debug #控制台打印sql
+    com.happycommunity.goods.dao: debug #控制台打印sql
   #config: classpath:logback-spring.xml
 
 system:

@@ -29,3 +29,5 @@ hs_err_pid*
 .settings/
 target/
 logs/
+*.cache
+*.cache.lock

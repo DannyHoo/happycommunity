@@ -22,4 +22,11 @@ public class GoodsDaoTest extends AbstractTest {
         GoodsDO goodsDO=goodsDAO.findByGoodsNo("G20180614160305682062");
         System.out.println(JSON.toJSONString(goodsDO));
     }
+
+    @Test
+    public void updateGoodsTest(){
+        GoodsDO goodsDO=goodsDAO.findByGoodsNo("G20180614160305682062");
+        int count=goodsDAO.update(goodsDO.setBalance(goodsDO.getBalance()-1));
+        System.out.println(count);
+    }
 }

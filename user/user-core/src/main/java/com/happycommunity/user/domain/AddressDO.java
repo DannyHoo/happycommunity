@@ -11,8 +11,10 @@ import com.happycommunity.framework.common.model.domain.BaseDO;
 public class AddressDO extends BaseDO {
 
     private String userName;
-    private String mobile;
-    private String address;
+    private String receiverName;
+    private String receiverMobileNo;
+    private String receiverAddress;
+    private Integer isDefault;
 
     public String getUserName() {
         return userName;
@@ -23,21 +25,39 @@ public class AddressDO extends BaseDO {
         return this;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getReceiverName() {
+        return receiverName;
     }
 
-    public AddressDO setMobile(String mobile) {
-        this.mobile = mobile;
+    public AddressDO setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
         return this;
     }
 
-    public String getAddress() {
-        return address;
+    public String getReceiverMobileNo() {
+        return receiverMobileNo;
     }
 
-    public AddressDO setAddress(String address) {
-        this.address = address;
+    public AddressDO setReceiverMobileNo(String receiverMobileNo) {
+        this.receiverMobileNo = receiverMobileNo;
+        return this;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public AddressDO setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
+        return this;
+    }
+
+    public Integer getIsDefault() {
+        return isDefault;
+    }
+
+    public AddressDO setIsDefault(Integer isDefault) {
+        this.isDefault = isDefault;
         return this;
     }
 }

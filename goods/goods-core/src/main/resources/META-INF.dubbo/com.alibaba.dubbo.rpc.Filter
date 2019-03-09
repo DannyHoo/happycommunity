@@ -1,0 +1,1 @@
+dubboContextFilter=com.happycommunity.goods.config.DubboContextFilter

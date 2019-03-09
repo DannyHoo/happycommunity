@@ -10,14 +10,13 @@ import com.happycommunity.business.service.user.UserBusinessService;
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.enums.ResultStatusEnum;
 import com.happycommunity.framework.common.model.result.ServiceResult;
-import com.happycommunity.framework.core.util.BeanUtil;
-import com.happycommunity.framework.core.util.MD5Util;
-import com.happycommunity.framework.core.util.RSAUtil;
-import com.happycommunity.framework.core.util.StringUtil;
+import com.happycommunity.framework.core.util.*;
 import com.happycommunity.user.model.parameter.UserParameter;
 import com.happycommunity.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * @author Danny
@@ -26,7 +25,7 @@ import org.springframework.stereotype.Service;
  * @Created on 2018-11-26 15:43:39
  */
 @Service("userBusinessService")
-@com.alibaba.dubbo.config.annotation.Service(version = "1.0.0", interfaceClass = UserBusinessService.class,filter = "dubboContextFilter")
+@com.alibaba.dubbo.config.annotation.Service(version = "1.0.0", interfaceClass = UserBusinessService.class, filter = "dubboContextFilter")
 public class UserBusinessServiceImpl implements UserBusinessService {
 
     @Reference(version = "1.0.0")
@@ -56,13 +55,16 @@ public class UserBusinessServiceImpl implements UserBusinessService {
             e.printStackTrace();
             return new ServiceResult(ResultStatusEnum.UNKOWN_SYS_ERROR);
         }
+        Map randomUserMap = RandomValueUtil.getAddress();
         String md5Password = MD5Util.md5HexTwoSourceAndSalt(decryptPassword, salt);
         userDTO.setUserName(registerParameter.getUserName())
-                .setMobileNo(registerParameter.getUserName())
+                .setMobileNo(randomUserMap.get("tel").toString())
                 .setEmail(registerParameter.getUserName() + "@163.com")
                 .setSalt(salt)
-                .setPassword(md5Password);
-        ServiceResult<UserDTO> userDTOSaveResult = userService.saveUser(BeanUtil.convertIgnoreNullProperty(userDTO,UserParameter.class));
+                .setPassword(md5Password)
+                .setRealName(randomUserMap.get("name").toString()) // TODO: 2019-02-24
+                .setIdCardNo(StringUtil.getRandomNum(18));        // TODO: 2019-02-24
+        ServiceResult<UserDTO> userDTOSaveResult = userService.saveUser(BeanUtil.convertIgnoreNullProperty(userDTO, UserParameter.class));
         if (userDTOSaveResult.isSuccess() && userDTOSaveResult.getData() != null) {
             return new ServiceResult(ResultStatusEnum.SUCCESS).setData(userDTOSaveResult.getData());
         }
@@ -93,6 +95,15 @@ public class UserBusinessServiceImpl implements UserBusinessService {
             return new ServiceResult(ResultStatusEnum.SUCCESS).setData(userDTO);
         }
         return new ServiceResult(ResultStatusEnum.USERNAME_OR_PASSWORD_INVALID);
+    }
+
+    @Override
+    public ServiceResult<UserDTO> findByUserName(LoginParameter loginParameter) {
+        ServiceResult<UserDTO> userDTOResult = userService.findByUserName(new UserParameter().setUserName(loginParameter.getUserName()));
+        if (userDTOResult.isFail() || userDTOResult.getData() == null) {
+            return new ServiceResult(ResultStatusEnum.USER_NOT_EXIST);
+        }
+        return new ServiceResult<>(ResultStatusEnum.SUCCESS,userDTOResult.getData());
     }
 
 }

@@ -11,7 +11,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 <configuration scan="true" scanPeriod="60 second" debug="false">
 
     <!--每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用<contextName>设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。-->
-    <contextName>happycommunity-goods</contextName>
+    <contextName>happycommunity-order</contextName>
 
     <!--通过<property>定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 -->
     <!--<property resource="/resource/app_${envType}.properties"/>-->
@@ -26,11 +26,11 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     </appender>
 
     <appender name="RollingFileAppender_Service" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logPath}/goods.log</file>
+        <file>${logPath}/order.log</file>
         <!--按照每天生成日志文件，最多保留30天，每过一天，日志名就变成类
         似log.2017-01-19.log.gz的形式。-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${system.log.loggingRoot}/goods.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${system.log.loggingRoot}/order.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>90</maxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -41,7 +41,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         </encoder>
     </appender>
 
-    <logger name="com.happycommunity.goods.service" level="${logLevel}">
+    <logger name="com.happycommunity.order.service" level="${logLevel}">
         <appender-ref ref="RollingFileAppender_Service"/>
     </logger>
 

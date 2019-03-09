@@ -20,13 +20,16 @@
     <dubbo:registry id="happycommunity-goods-registry" protocol="zookeeper" address="39.106.124.34:2181"
                     file="dubbo-registry.cache"/>
 
-    <dubbo:protocol name="dubbo" port="20030" server="netty" client="netty" serialization="java"
+    <dubbo:protocol name="dubbo" port="20040" server="netty" client="netty" serialization="java"
                     charset="UTF-8" threadpool="fixed" threads="200" queues="0" iothreads="9" buffer="8192"
                     accepts="1000" payload="88388608"/>
 
     <dubbo:service registry="happycommunity-goods-registry" application="happycommunity-goods-app"
-                   interface="com.happycommunity.goods.service.GoodsService" ref="goodsService"
+                   interface="com.happycommunity.order.service.OrderService" ref="orderService"
                    version="1.0.0" protocol="dubbo"/>
 
+    <dubbo:service registry="happycommunity-goods-registry" application="happycommunity-goods-app"
+                   interface="com.happycommunity.order.service.OrderDetailService" ref="orderDetailService"
+                   version="1.0.0" protocol="dubbo"/>
 
 </beans>

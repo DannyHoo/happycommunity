@@ -45,8 +45,13 @@ public class StringUtil {
                 + s.substring(19, 23) + s.substring(24);
     }
 
+    public static void main(String[] args) {
+        System.out.println(getRandomTimeStr());
+    }
+
     /**
      * 按当前时间随机生成数字字符串+3位随机数
+     * 20190225181410776593
      *
      * @return
      */

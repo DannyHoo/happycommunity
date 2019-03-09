@@ -12,7 +12,7 @@ import java.util.List;
  * @Description:
  * @Created on 2018-12-14 15:35:52
  */
-public class UserListParameter extends BaseParameter {
+public class UserListParameter extends GlobalTraceData {
 
     private List<UserDTO> userDTOList;
 

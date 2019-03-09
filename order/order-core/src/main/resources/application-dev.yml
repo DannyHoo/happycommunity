@@ -9,9 +9,9 @@ spring:
     platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
-    initialSize: 1
+    initialSize: 10
     minIdle: 3
-    maxActive: 20
+    maxActive: 80
     # 配置获取连接等待超时的时间
     maxWait: 60000
     # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
@@ -35,10 +35,10 @@ spring:
 
 logging:
   level:
-    com.happycommunity.user.dao: debug #控制台打印sql
+    com.happycommunity.order.dao: debug #控制台打印sql
   #config: classpath:logback-spring.xml
 
 system:
   log:
-    logPath: /Users/dannyhoo/data/logs/happycommunity/goods
+    logPath: /Users/dannyhoo/data/logs/happycommunity/order
     logLevel: INFO

@@ -17,6 +17,7 @@ public class ServiceResult<R> implements Serializable {
 
     private ResultStatusEnumInterface resultStatusEnum;
     private R data;
+    private String message;
 
     public R getData() {
         return data;
@@ -39,12 +40,26 @@ public class ServiceResult<R> implements Serializable {
         this.data = data;
     }
 
+    public ServiceResult(ResultStatusEnumInterface resultStatusEnum, String message) {
+        this.resultStatusEnum = resultStatusEnum;
+        this.message = message;
+    }
+
     public ResultStatusEnumInterface getResultStatusEnum() {
         return resultStatusEnum;
     }
 
     public ServiceResult setResultStatusEnum(ResultStatusEnumInterface resultStatusEnum) {
         this.resultStatusEnum = resultStatusEnum;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public ServiceResult<R> setMessage(String message) {
+        this.message = message;
         return this;
     }
 

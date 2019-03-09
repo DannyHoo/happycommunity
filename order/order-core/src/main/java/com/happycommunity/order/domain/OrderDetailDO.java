@@ -2,6 +2,8 @@ package com.happycommunity.order.domain;
 
 import com.happycommunity.framework.common.model.domain.BaseDO;
 
+import java.math.BigDecimal;
+
 /**
  * @author Danny
  * @Title: OrderDetailDO
@@ -14,11 +16,11 @@ public class OrderDetailDO extends BaseDO {
     /* 商品编号 */
     private String goodsNo;
     /* 商品数量 */
-    private String goodsNum;
+    private int goodsNum;
     /* 订单总金额 */
-    private String totalPrice;
+    private BigDecimal totalPrice;
     /* 应付价格 */
-    private String actualPrice;
+    private BigDecimal actualPrice;
 
     public String getOrderNo() {
         return orderNo;
@@ -38,29 +40,29 @@ public class OrderDetailDO extends BaseDO {
         return this;
     }
 
-    public String getGoodsNum() {
+    public int getGoodsNum() {
         return goodsNum;
     }
 
-    public OrderDetailDO setGoodsNum(String goodsNum) {
+    public OrderDetailDO setGoodsNum(int goodsNum) {
         this.goodsNum = goodsNum;
         return this;
     }
 
-    public String getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public OrderDetailDO setTotalPrice(String totalPrice) {
+    public OrderDetailDO setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }
 
-    public String getActualPrice() {
+    public BigDecimal getActualPrice() {
         return actualPrice;
     }
 
-    public OrderDetailDO setActualPrice(String actualPrice) {
+    public OrderDetailDO setActualPrice(BigDecimal actualPrice) {
         this.actualPrice = actualPrice;
         return this;
     }

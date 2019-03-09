@@ -12,7 +12,6 @@ import org.springframework.context.annotation.ImportResource;
  * @Created on 2018-12-19 14:13:31
  */
 @SpringBootApplication(scanBasePackages = "com.happycommunity.goods")
-@ImportResource(value = {"classpath:dubbo/dubbo-provider.xml", "classpath:dubbo/dubbo-consumer.xml"})
 public class GoodsCoreApplication {
 
     public static void main(String[] args) {

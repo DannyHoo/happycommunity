@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.*;
 
 /**
  * @author Danny
@@ -26,25 +24,44 @@ public class OrderDaoTest extends AbstractTest {
     private OrderDAO orderDAO;
 
     @Test
-    public void findTest(){
-        OrderDO orderDO=orderDAO.findByOrderNo("u2c7JT20190104171236527653");
-        System.out.println(JSON.toJSONString(orderDO));
+    public void findTest() {
+        long startTime = System.currentTimeMillis();
+        OrderDO orderDO = orderDAO.findByOrderNo("WAJbR520190305221700770965");
+        System.out.println("结果："+JSON.toJSONString(orderDO)+"\n 耗时："+(System.currentTimeMillis() - startTime));
     }
 
     @Test
-    public void test() {
-        /*ExecutorService executorService= Executors.newCachedThreadPool();
-        executorService.submit(new Thread(new Worker()));
-        executorService.shutdown();*/
-        while(true){
-            List<OrderDO> orderDOList=new ArrayList<>();
-            for (int i=0;i<10000;i++){
-                orderDOList.add(getOrderDO());
-            }
-            long startTime=System.currentTimeMillis();
-            int result=orderDAO.insertOrderDOBatch(orderDOList);
-            System.out.println("插入数据："+result+"，耗时："+(System.currentTimeMillis()-startTime));
+    public void test() throws InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        for (int i = 0; i < 20; i++) {//20个线程
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 10; j++) {//每个线程执行100次
+                        List<OrderDO> orderDOList = new ArrayList<>();
+                        for (int i = 0; i < 3000; i++) {//每次插入1000条数据
+                            orderDOList.add(getOrderDO());
+                        }
+                        long startTime = System.currentTimeMillis();
+                        int result = orderDAO.insertOrderDOBatch(orderDOList);
+                        System.out.println(Thread.currentThread().getName() + "原始数据条数"+orderDOList.size()+"，插入数据条数：" + result + "，耗时：" + (System.currentTimeMillis() - startTime));
+                    }
+                }
+            });
+            executorService.submit(thread);
         }
+        Thread.currentThread().sleep(24 * 60 * 60 * 1000);
+    }
+
+    @Test
+    public void test1() {
+        List<OrderDO> orderDOList = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            orderDOList.add(getOrderDO());
+        }
+        long startTime = System.currentTimeMillis();
+        int result = orderDAO.insertOrderDOBatch(orderDOList);
+        System.out.println("插入数据：" + result + "，耗时：" + (System.currentTimeMillis() - startTime));
     }
 
     @Test
@@ -52,27 +69,27 @@ public class OrderDaoTest extends AbstractTest {
         /*OrderDO orderOD=orderDAO.findByOrderNo("4G698E20190104160810008575");
         System.out.println(JSON.toJSONString(orderOD));
 */
-        long startTime=System.currentTimeMillis();
-        int result=orderDAO.insertOrderDO(getOrderDO());
-        System.out.println("插入数据："+result+"，耗时："+(System.currentTimeMillis()-startTime));
+        long startTime = System.currentTimeMillis();
+        int result = orderDAO.insertOrderDO(getOrderDO());
+        System.out.println("插入数据：" + result + "，耗时：" + (System.currentTimeMillis() - startTime));
     }
 
 
-    private volatile static int listSize=20;
+    private volatile static int listSize = 20;
     private static Object lock = new Object();
     private volatile static boolean isNeedProduce = true;
 
-    class Worker implements Runnable{
+    class Worker implements Runnable {
         @Override
         public void run() {
-            while(true){
-                List<OrderDO> orderDOList=new ArrayList<>();
-                for (int i=0;i<10000;i++){
+            while (true) {
+                List<OrderDO> orderDOList = new ArrayList<>();
+                for (int i = 0; i < 10000; i++) {
                     orderDOList.add(getOrderDO());
                 }
-                long startTime=System.currentTimeMillis();
-                int result=orderDAO.insertOrderDOBatch(orderDOList);
-                System.out.println("插入数据："+result+"，耗时："+(System.currentTimeMillis()-startTime));
+                long startTime = System.currentTimeMillis();
+                int result = orderDAO.insertOrderDOBatch(orderDOList);
+                System.out.println("插入数据：" + result + "，耗时：" + (System.currentTimeMillis() - startTime));
             }
         }
     }
@@ -92,7 +109,7 @@ public class OrderDaoTest extends AbstractTest {
                             e.printStackTrace();
                         }
                     }
-                    listSize=1000;
+                    listSize = 1000;
                     System.out.println("1000条数据已经进入队列");
                     lock.notifyAll();
                 }
@@ -112,7 +129,7 @@ public class OrderDaoTest extends AbstractTest {
             while (true) {
                 synchronized (lock) {
                     System.out.println("Consumer get lock");
-                    while (listSize==0) {
+                    while (listSize == 0) {
                         try {
                             System.out.println("容器已空，等待生产");
                             lock.wait();
@@ -121,7 +138,7 @@ public class OrderDaoTest extends AbstractTest {
                         }
                     }
                     save();
-                    if (listSize==0) System.out.println("1000条数据已经保存");
+                    if (listSize == 0) System.out.println("1000条数据已经保存");
                     lock.notifyAll();
                 }
             }
@@ -130,7 +147,7 @@ public class OrderDaoTest extends AbstractTest {
 
     private OrderDO getOrderDO() {
         Map randomUserMap = RandomValueUtil.getAddress();
-        return new OrderDO()
+        return (OrderDO) new OrderDO()
                 .setOrderNo(StringUtil.getStringRandom(6) + StringUtil.getRandomTimeStr())
                 .setUserName(StringUtil.getStringRandom(8))
                 .setReceiverName(randomUserMap.get("name").toString())
@@ -143,6 +160,16 @@ public class OrderDaoTest extends AbstractTest {
                 .setTotalPrice(BigDecimal.valueOf(new Random().nextDouble()).multiply(BigDecimal.TEN))
                 .setCutDownPrice(BigDecimal.valueOf(new Random().nextDouble()).multiply(BigDecimal.TEN))
                 .setFreight(BigDecimal.valueOf(new Random().nextDouble()).multiply(BigDecimal.TEN))
-                .setActualPrice(BigDecimal.valueOf(new Random().nextDouble()).multiply(BigDecimal.TEN));
+                .setActualPrice(BigDecimal.valueOf(new Random().nextDouble()).multiply(BigDecimal.TEN))
+                .setComment("这是测试订单");
+    }
+
+
+    static class MyQueue {
+        BlockingQueue blockingQueue = new ArrayBlockingQueue(1000, true);
+
+        public void exec() {
+
+        }
     }
 }

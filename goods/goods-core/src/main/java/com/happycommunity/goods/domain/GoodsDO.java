@@ -2,6 +2,8 @@ package com.happycommunity.goods.domain;
 
 import com.happycommunity.framework.common.model.domain.BaseDO;
 
+import java.math.BigDecimal;
+
 /**
  * @author Danny
  * @Title: GoodsDO
@@ -14,17 +16,19 @@ public class GoodsDO extends BaseDO{
     /* 商品名称 */
     private String goodsName;
     /* 原价 */
-    private String originPrice;
+    private BigDecimal originPrice;
     /* 现价 */
-    private String nowPrice;
+    private BigDecimal nowPrice;
     /* 商品总数量 */
-    private String totalNum;
+    private int totalNum;
     /* 剩余数量 */
-    private String balance;
+    private int balance;
     /*  */
     private String description;
     /*  */
     private String pictureUrls;
+    /* 商品状态 10正常 20下架 */
+    private Integer status;
 
     public String getGoodsNo() {
         return goodsNo;
@@ -44,38 +48,38 @@ public class GoodsDO extends BaseDO{
         return this;
     }
 
-    public String getOriginPrice() {
+    public BigDecimal getOriginPrice() {
         return originPrice;
     }
 
-    public GoodsDO setOriginPrice(String originPrice) {
+    public GoodsDO setOriginPrice(BigDecimal originPrice) {
         this.originPrice = originPrice;
         return this;
     }
 
-    public String getNowPrice() {
+    public BigDecimal getNowPrice() {
         return nowPrice;
     }
 
-    public GoodsDO setNowPrice(String nowPrice) {
+    public GoodsDO setNowPrice(BigDecimal nowPrice) {
         this.nowPrice = nowPrice;
         return this;
     }
 
-    public String getTotalNum() {
+    public int getTotalNum() {
         return totalNum;
     }
 
-    public GoodsDO setTotalNum(String totalNum) {
+    public GoodsDO setTotalNum(int totalNum) {
         this.totalNum = totalNum;
         return this;
     }
 
-    public String getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public GoodsDO setBalance(String balance) {
+    public GoodsDO setBalance(int balance) {
         this.balance = balance;
         return this;
     }
@@ -95,6 +99,15 @@ public class GoodsDO extends BaseDO{
 
     public GoodsDO setPictureUrls(String pictureUrls) {
         this.pictureUrls = pictureUrls;
+        return this;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public GoodsDO setStatus(Integer status) {
+        this.status = status;
         return this;
     }
 }

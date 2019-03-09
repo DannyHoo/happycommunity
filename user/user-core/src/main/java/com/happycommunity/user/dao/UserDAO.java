@@ -15,9 +15,11 @@ import java.util.List;
 @Mapper
 public interface UserDAO {
 
+    @Select("select * from t_user")
+    List<UserDO> findAll();
+
     @Select("select * from t_user where userName=#{userName}")
     UserDO findByUserName(@Param("userName") String userName);
-
 
     @Insert("insert into t_user(userName,mobileNo,salt,password,email,realName,idCardNo) values (#{userName},#{mobileNo},#{salt},#{password},#{email},#{realName},#{idCardNo})")
     @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statementType = StatementType.STATEMENT, statement = "SELECT LAST_INSERT_ID() AS id")

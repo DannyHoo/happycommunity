@@ -21,9 +21,13 @@ public enum  ResultStatusEnum implements ResultStatusEnumInterface {
     USER_ALREADY_EXIST(200000,"用户名已存在"),
     USERNAME_OR_PASSWORD_INVALID(200010,"用户名或密码错误"),
     USER_NOT_LOGIN(200020,"用户尚未登录，请登录系统"),
+    USER_NOT_EXIST(200020,"用户不存在"),
 
-    //秒杀请求 201000~201999
-
+    //下单 201000~201999
+    USER_ADDRESS_NOT_EXIST(201000,"用户收货人地址不存在"),
+    GOODS_NOT_EXIST(201010,"商品不存在"),
+    GOODS_BALANCE_NOT_ENOUGH(201010,"商品库存不足"),
+    GOODS_BALANCE_UPDATE_FAILURE(201010,"商品库存更新失败"),
     ;
     private int code;
     private String description;
