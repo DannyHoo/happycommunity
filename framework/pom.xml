@@ -17,6 +17,7 @@
         <module>framework-mq</module>
         <module>framework-lock</module>
         <module>framework-cache</module>
+        <module>framework-lock</module>
     </modules>
 
 

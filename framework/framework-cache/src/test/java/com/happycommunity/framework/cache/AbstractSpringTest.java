@@ -31,8 +31,7 @@ public class AbstractSpringTest extends AbstractJUnit4SpringContextTests {
     public void getTest() throws InterruptedException {
         ValueOperations valueOperations=redisTemplate.opsForValue();
 
-
-        Object object=valueOperations.get("00002c06-e176-4b61-9ffd-73be614172ed");
+        Object object=valueOperations.get("aaa");
         System.out.println(JSON.toJSONString(object));
         Set<String> keys =new HashSet<String>();
 
@@ -48,7 +47,7 @@ public class AbstractSpringTest extends AbstractJUnit4SpringContextTests {
         try{
             final ValueOperations valueOperations=redisTemplate.opsForValue();
             ExecutorService threadPool= Executors.newFixedThreadPool(1000);
-            for (int i=0;i<10000000;i++){
+            for (int i=0;i<100000;i++){
                 threadPool.submit(new Runnable() {
                     public void run() {
                         valueOperations.set(UUID.randomUUID().toString(),StringUtil.getStringRandom(1000));
