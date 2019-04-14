@@ -22,11 +22,11 @@
 
     <dubbo:protocol name="dubbo" port="20040" server="netty" client="netty" serialization="java"
                     charset="UTF-8" threadpool="fixed" threads="200" queues="0" iothreads="9" buffer="8192"
-                    accepts="1000" payload="88388608"/>
+                    accepts="1000" payload="88388608" />
 
     <dubbo:service registry="happycommunity-goods-registry" application="happycommunity-goods-app"
                    interface="com.happycommunity.order.service.OrderService" ref="orderService"
-                   version="1.0.0" protocol="dubbo"/>
+                   version="1.0.0" protocol="dubbo" timeout="300000" retries="3" loadbalance="random"/>
 
     <dubbo:service registry="happycommunity-goods-registry" application="happycommunity-goods-app"
                    interface="com.happycommunity.order.service.OrderDetailService" ref="orderDetailService"

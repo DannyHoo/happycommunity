@@ -5,7 +5,7 @@ import com.happycommunity.framework.core.util.StringUtil;
 import org.springframework.core.NamedThreadLocal;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: GlobalTraceDataHandler
  * @Description:
  * @Created on 2018-06-12 09:40:56

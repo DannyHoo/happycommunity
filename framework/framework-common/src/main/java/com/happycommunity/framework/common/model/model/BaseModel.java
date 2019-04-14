@@ -3,7 +3,7 @@ package com.happycommunity.framework.common.model.model;
 import java.io.Serializable;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: BaseModel
  * @Description:
  * @Created on 2018-06-12 15:28:26

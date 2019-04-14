@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication(scanBasePackages ="com.happycommunity.order")
 @ImportResource(value = {"classpath:dubbo/dubbo-provider.xml","classpath:dubbo/dubbo-consumer.xml"})
+//@PropertySource(value= {"classpath:config/test.properties"})
 public class OrderCoreApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(OrderCoreApplication.class, args);

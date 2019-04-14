@@ -1,4 +1,4 @@
-package com.happycommunity.framework.cache;
+package com.happycommunity.framework;
 
 import com.alibaba.fastjson.JSON;
 import com.happycommunity.framework.core.util.StringUtil;
@@ -31,6 +31,7 @@ public class AbstractSpringTest extends AbstractJUnit4SpringContextTests {
     public void getTest() throws InterruptedException {
         ValueOperations valueOperations=redisTemplate.opsForValue();
 
+        valueOperations.set("aaa","ccc");
         Object object=valueOperations.get("aaa");
         System.out.println(JSON.toJSONString(object));
         Set<String> keys =new HashSet<String>();

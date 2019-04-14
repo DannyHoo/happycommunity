@@ -10,7 +10,7 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: IPUtils
  * @Description:
  * @Created on 2018-06-12 10:14:22

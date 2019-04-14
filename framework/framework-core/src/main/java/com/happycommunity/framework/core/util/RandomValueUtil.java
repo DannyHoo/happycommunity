@@ -4,11 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author
  * @Title: RandomValue
- * @Copyright: Copyright (c) 2016
  * @Description: 随机生成中文姓名，手机号，邮编，住址
- * @Company: lxjr.com
  * @Created on 2017-02-07 16:29:39
  */
 public class RandomValueUtil {
