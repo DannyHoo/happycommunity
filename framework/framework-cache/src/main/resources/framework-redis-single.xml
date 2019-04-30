@@ -21,9 +21,9 @@
 
     <!-- 单机配置 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value=""/>
+        <property name="hostName" value="39.106.124.34"/>
         <property name="port" value="6379"/>
-        <property name="password" value=""/>
+        <property name="password" value="requirepass"/>
         <property name="timeout" value="2000"/>
         <property name="poolConfig" ref="jedisPoolConfig"/>
     </bean>

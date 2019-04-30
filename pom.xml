@@ -46,6 +46,8 @@
         <jedis.version>2.4.2</jedis.version>-->
         <spring-data-redis.version>1.8.12.RELEASE</spring-data-redis.version>
         <jedis.version>2.9.0</jedis.version>
+        <kafka.version>2.1.1</kafka.version>
+        <rocketmq.version>4.4.0</rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -227,6 +229,20 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>1.10</version>
+            </dependency>
+
+            <!-- Kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.12</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+
+            <!-- RocketMQ-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

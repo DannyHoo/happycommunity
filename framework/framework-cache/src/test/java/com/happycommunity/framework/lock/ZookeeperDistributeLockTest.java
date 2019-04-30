@@ -45,7 +45,7 @@ public class ZookeeperDistributeLockTest/* extends AbstractSpringTest*/ {
                     }
 
                     try {
-                        lock.acquire();
+                        //lock.acquire();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -54,7 +54,7 @@ public class ZookeeperDistributeLockTest/* extends AbstractSpringTest*/ {
 
                     try {
                         /*if (finalI == 40) throw new Exception();*/
-                        lock.release();
+                        //lock.release();
                     } catch (Exception e) {
                         System.out.println("生成的第" + (finalI) + "个订单号时异常，没有释放锁");
                     }
