@@ -23,11 +23,12 @@ public class SyncProducer {
         DefaultMQProducer mqProducer = new DefaultMQProducer("Group-002");
         mqProducer.setNamesrvAddr("39.106.124.34:9876");
 
+
         mqProducer.start();
         /*mqProducer.createTopic("Topic-001");*/
         for (int i = 0; i < 1; i++) {
             //Message message=new Message("Topic-001","Tag-001",("This is Message Content "+i).getBytes(RemotingHelper.DEFAULT_CHARSET));
-            Message message = new Message("Topic-002", "Tag-002", ("This is 【Sync】 Message Content " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message message = new Message("Topic-001", "Tag-003", ("This is 【Sync】 Message Content " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult sendResult = mqProducer.send(message);
             System.out.println(sendResult);
         }

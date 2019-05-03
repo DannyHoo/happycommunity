@@ -19,6 +19,10 @@
         </dependency>
         <dependency>
             <groupId>com.happycommunity</groupId>
+            <artifactId>framework-mq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.happycommunity</groupId>
             <artifactId>framework-core</artifactId>
             <exclusions>
                 <exclusion>

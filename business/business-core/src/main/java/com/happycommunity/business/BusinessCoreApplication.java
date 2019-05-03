@@ -5,6 +5,7 @@ import com.happycommunity.business.config.SystemConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author Danny
@@ -13,6 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @Created on 2018-11-26 17:35:50
  */
 @SpringBootApplication
+@ImportResource(value = {"classpath:framework-rocketmq.xml"})
 public class BusinessCoreApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(BusinessCoreApplication.class, args);

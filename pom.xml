@@ -66,6 +66,11 @@
             </dependency>
             <dependency>
                 <groupId>com.happycommunity</groupId>
+                <artifactId>framework-mq</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.happycommunity</groupId>
                 <artifactId>user-interface</artifactId>
                 <version>${happycommunity-user.version}</version>
             </dependency>

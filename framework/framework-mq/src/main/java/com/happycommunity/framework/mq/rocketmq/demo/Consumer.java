@@ -19,14 +19,16 @@ public class Consumer {
 
     public static void main(String[] args) throws MQClientException {
 
-        DefaultMQPushConsumer mQPushConsumer=new DefaultMQPushConsumer("Group-001");
+        DefaultMQPushConsumer mQPushConsumer = new DefaultMQPushConsumer("Group-001");
         mQPushConsumer.setNamesrvAddr("39.106.124.34:9876");
+        //mqPushConsumer.setConsumeMessageBatchMaxSize(10);//每次拉取10条
+        //mqPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);//设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费，如果非第一次启动，那么按照上次消费的位置继续消费
 
-        mQPushConsumer.subscribe("Topic-001","*");
+        mQPushConsumer.subscribe("Topic-001", "Tag-003");
 
         mQPushConsumer.registerMessageListener(new MessageListenerConcurrently() {
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-                System.out.println(Thread.currentThread().getName()+" Received Message："+list);
+                System.out.println(Thread.currentThread().getName() + " Received Message：" + list);
                 try {
                     Thread.sleep(30000);
                 } catch (InterruptedException e) {
