@@ -8,6 +8,7 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,9 @@ public class BaseMQConsumer extends AbstractMQConsumer {
         mqPushConsumer.setConsumerGroup(group);
         mqPushConsumer.setNamesrvAddr(namesrvAddr);
         mqPushConsumer.setInstanceName(getRocketMqUniqueInstanceName());
+        //mqPushConsumer.setConsumeThreadMax(10);
+        //mqPushConsumer.setConsumeThreadMin(2);
+        //mqPushConsumer.setMessageModel(MessageModel.CLUSTERING); //设置消费方式（MessageModel.BROADCASTING模式下需要先启动consumer）
         //mqPushConsumer.setConsumeMessageBatchMaxSize(10);//每次最多拉取10条
         //mqPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);//设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费，如果非第一次启动，那么按照上次消费的位置继续消费
     }
@@ -39,7 +43,7 @@ public class BaseMQConsumer extends AbstractMQConsumer {
         mqPushConsumer.subscribe(topic, tag);
         mqPushConsumer.registerMessageListener(new MessageListenerConcurrently() {
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-                for (MessageExt messageExt : list) {
+                for (MessageExt messageExt : list) {//如果是批量时列表中任意一条消息
                     try {
                         Object object = SerializeUtil.deSerialize(messageExt.getBody());
                         //throw new Exception("消费异常，重新消费测试");
@@ -55,7 +59,7 @@ public class BaseMQConsumer extends AbstractMQConsumer {
                         return ConsumeConcurrentlyStatus.RECONSUME_LATER; //1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
                     }
                 }
-                // 有异常抛出来，不要全捕获了，这样保证不能消费的消息下次重推，每次重新消费间隔：10s,30s,1m,2m,3m
+                // 有异常抛出来，不要全捕获了，这样保证不能消费的消息下次重推，每次重新消费间隔：10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
                 // 如果没有异常会认为都成功消费
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS; //消费方明确表示消费成功
             }

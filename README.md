@@ -9,6 +9,12 @@ ORM框架：mybatis
 
 日志：logback
 
+缓存：Redis
+
+分布式锁：Redis分布式锁、Zookeeper分布式锁、DB分布式锁
+
+消息队列：RocketMQ
+
 
 ![](HappyCommunity.png)
 
