@@ -14,9 +14,11 @@ import java.util.List;
  */
 @Mapper
 public interface OrderDAO {
+    @Select("select * from t_order")
+    List<OrderDO> findAll();
+
     @Select("select * from t_order where orderNo=#{orderNo}")
     OrderDO findByOrderNo(@Param("orderNo") String orderNo);
-
 
     @Insert("insert into t_order(orderNo,userName,receiverName,receiverMobileNo,receiverAddress,payType,status,deliverType,deliverTime,totalPrice,cutDownPrice,freight,actualPrice) values (#{orderNo},#{userName},#{receiverName},#{receiverMobileNo},#{receiverAddress},#{payType},#{status},#{deliverType},#{deliverTime},#{totalPrice},#{cutDownPrice},#{freight},#{actualPrice})")
     @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statementType = StatementType.STATEMENT, statement = "SELECT LAST_INSERT_ID() AS id")

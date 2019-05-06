@@ -24,6 +24,13 @@ public class OrderDaoTest extends AbstractTest {
     private OrderDAO orderDAO;
 
     @Test
+    public void findAllTest() {
+        long startTime = System.currentTimeMillis();
+        List<OrderDO> orderDOList= orderDAO.findAll();
+        System.out.println("结果："+JSON.toJSONString(orderDOList)+"\n 耗时："+(System.currentTimeMillis() - startTime));
+    }
+
+    @Test
     public void findTest() {
         long startTime = System.currentTimeMillis();
         OrderDO orderDO = orderDAO.findByOrderNo("WAJbR520190305221700770965");
