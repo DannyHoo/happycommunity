@@ -10,7 +10,7 @@
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="merchant-api" />
+    <dubbo:application name="happycommunity-order" />
 
     <dubbo:registry protocol="zookeeper" address="39.106.124.34:2181" />
 

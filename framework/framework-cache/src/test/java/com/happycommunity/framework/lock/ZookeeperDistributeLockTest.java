@@ -29,7 +29,7 @@ public class ZookeeperDistributeLockTest/* extends AbstractSpringTest*/ {
     }
 
     public static void main(String[] args) throws Exception {
-        final InterProcessMutex lock = getLock();
+        //final InterProcessMutex lock = getLock(); //这种方式比较耗时
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss|SSS");
 
@@ -43,9 +43,14 @@ public class ZookeeperDistributeLockTest/* extends AbstractSpringTest*/ {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
+                    InterProcessMutex lock = null;
                     try {
-                        //lock.acquire();
+                        lock = getLock();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        lock.acquire();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -54,7 +59,7 @@ public class ZookeeperDistributeLockTest/* extends AbstractSpringTest*/ {
 
                     try {
                         /*if (finalI == 40) throw new Exception();*/
-                        //lock.release();
+                        lock.release();
                     } catch (Exception e) {
                         System.out.println("生成的第" + (finalI) + "个订单号时异常，没有释放锁");
                     }

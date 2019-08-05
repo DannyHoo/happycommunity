@@ -7,16 +7,17 @@ import com.happycommunity.framework.core.util.MD5Util;
 import com.happycommunity.framework.core.util.RSAUtil;
 import com.happycommunity.gateway.controller.AbstractController;
 import com.happycommunity.gateway.response.ResponseData;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -50,6 +51,28 @@ public class PublicTestController extends AbstractController {
         return new ResponseData().setData(encryptContent);
     }
 
+    @RequestMapping("/encoding")
+    @ResponseBody
+    public ResponseData encoding(@RequestBody(required = true) Map<String, Object> map) throws Exception {
+        String content = new String(((String)map.get("msgContent")).getBytes(),"UTF-8");
+        System.out.println("收到内容："+content);
+        return new ResponseData().setData("返回内容："+content);
+    }
+
+    @RequestMapping(value = "/1/{channelCode}")
+    @ResponseBody
+    public ResponseEntity callback(@PathVariable("channelCode") String channelCode, HttpServletRequest request) throws IOException {
+        String content = channelCode;
+        String value1=request.getParameter("key1");
+        String value2=request.getQueryString();
+        String value3=HttpServletRequestUtil.getRequestBody(request);
+        Map map1=request.getParameterMap();
+        Map map2=HttpServletRequestUtil.getRequestParameters(request);
+        Map map3=HttpServletRequestUtil.getHeadersInfo(request);
+        System.out.println("收到内容："+value3);
+        return new ResponseEntity(value3, HttpStatus.OK);
+    }
+
     @RequestMapping("/getRequestBodyTest")
     @ResponseBody
     public ResponseData getRequestBodyTest(HttpServletRequest request) throws Exception {
@@ -63,6 +86,16 @@ public class PublicTestController extends AbstractController {
         String huaxiaCompanyId=request.getParameter("huaxiaCompanyId");
         String huaxiaOrderNo=request.getParameter("huaxiaOrderNo");
         return huaxiaCompanyId+huaxiaOrderNo;
+    }
+
+    @RequestMapping(value = "/v1/batch_pay_electronic_return/batch_download_apply", method = RequestMethod.GET)
+    public ResponseData batchDownloadBatchPayElectronicReturnApply(@RequestHeader("merchantId") String merchantId, String date, HttpServletResponse response) {
+
+        /*if(StringUtils.isBlank(merchantId) || StringUtils.isBlank(date)){
+            throw new ReturnFileNotExistException("参数错误!");
+        }*/
+        System.out.println(merchantId+"-"+date);
+        return new ResponseData().setMessage("d09we1nwe01i2je0123i12").setData("SUCCESS").setCode(100000);
     }
 
     @RequestMapping("/responseWrite")

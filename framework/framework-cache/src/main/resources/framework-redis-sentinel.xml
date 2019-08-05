@@ -24,9 +24,9 @@
         <constructor-arg name="master" value="myMaster"/>
         <constructor-arg name="sentinelHostAndPorts">
             <set>
-                <value>127.0.0.1:6379</value>
-                <value>127.0.0.1:6378</value>
-                <value>127.0.0.1:6377</value>
+                <value>127.0.0.1:26379</value>
+                <value>127.0.0.1:26378</value>
+                <value>127.0.0.1:26377</value>
             </set>
         </constructor-arg>
     </bean>

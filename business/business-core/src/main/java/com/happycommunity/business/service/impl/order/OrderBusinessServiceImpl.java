@@ -94,10 +94,12 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
         //加锁开始
         lock.lock();
         for (OrderDetailDTO orderDetailDTO : orderDetailDTOList) {
+            //校验商品信息
             ServiceResult<GoodsDTO> goodsDTOServiceResult = goodsService.findByGoodsNo(new GoodsParameter().setGoodsNo(orderDetailDTO.getGoodsNo()));
             if (goodsDTOServiceResult.isFail() || goodsDTOServiceResult.getData() == null) {
                 return new ServiceResult<>(ResultStatusEnum.GOODS_NOT_EXIST);
             }
+            //校验商品数量
             GoodsDTO goodsDTO = goodsDTOServiceResult.getData();
             if (goodsDTO.getBalance() <orderDetailDTO.getGoodsNum()) {
                 return new ServiceResult<>(ResultStatusEnum.GOODS_BALANCE_NOT_ENOUGH);

@@ -49,7 +49,7 @@ public class OrderSaveConsumer extends BaseMQConsumer {
             orderParameter = (OrderParameter) messageContent;
             ServiceResult<OrderDTO> result = orderService.saveOrder(orderParameter);
             if (result.isSuccess()) {
-                System.out.println("订单入库成功："+ JSON.toJSONString(orderParameter));
+                System.out.println("订单入库成功");
                 return true;
             } else {
                 System.out.println("订单入库失败:"+ JSON.toJSONString(orderParameter));

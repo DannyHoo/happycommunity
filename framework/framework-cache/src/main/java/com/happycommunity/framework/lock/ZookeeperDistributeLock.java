@@ -10,16 +10,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class ZookeeperDistributeLock extends AbstractDistributeLock {
 
-
-    public void lock() throws Exception {
-
-    }
-
-    public boolean tryLock(long time, TimeUnit timeUnit) throws Exception {
+    public boolean lock(String lockKey) throws Exception {
         return false;
     }
 
-    public void unLock() throws Exception {
+    public boolean tryLock(String lockKey,long time, TimeUnit timeUnit) throws Exception {
+        return false;
+    }
 
+    public boolean unLock(String lockKey) throws Exception {
+        return false;
     }
 }

@@ -96,6 +96,12 @@ public class RedisDistributeLockTest /*extends AbstractSpringTest */ {
         }
     }
 
+    /**
+     * 释放锁
+     * 当前线程执行超时后，其他线程如果获取了锁，则可能会释放其他线程的锁
+     * todo 升级使用watch监控key，用事务删除锁：https://www.cnblogs.com/liuyang0/p/6744076.html
+     * @param lockKey
+     */
     public void unLock(String lockKey) {
         redisTemplate.delete(lockKey);
     }
@@ -119,7 +125,6 @@ public class RedisDistributeLockTest /*extends AbstractSpringTest */ {
                     return true;
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

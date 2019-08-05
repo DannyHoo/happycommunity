@@ -8,6 +8,8 @@ spring:
       id: happycommunity-business-protocol
       name: dubbo
       port: 20010
+      threads: 400
+      dispatcher: message
     registry:
       protocol: zookeeper
       address: zookeeper://39.106.124.34:2181
